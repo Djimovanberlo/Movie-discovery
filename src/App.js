@@ -13,9 +13,9 @@ export default function App() {
       <h1>Movies (or films, or pictures. Whichever you like)</h1>
       <NavBar></NavBar>
       <Switch>
-        <Route path="/" component={HomePage} />
-        <Route path="/discover" component={DiscoverPage} />
-        <Route path="/about" component={AboutPage} />
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/discover" component={DiscoverPage} />
+        <Route exact path="/about" component={AboutPage} />
       </Switch>
     </div>
   );

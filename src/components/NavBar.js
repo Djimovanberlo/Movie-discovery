@@ -10,15 +10,17 @@ import {
 export default function NavBar() {
   return (
     <div>
-      <NavLink exact to="/" activeStyle={{ fontWeight: "bold" }}>
-        Home
-      </NavLink>{" "}
-      <NavLink exact to="/discover" activeStyle={{ fontWeight: "bold" }}>
-        Discover
-      </NavLink>{" "}
-      <NavLink exact to="/about" activeStyle={{ fontWeight: "bold" }}>
-        About
-      </NavLink>
+      <Route>
+        <NavLink exact to="/" activeStyle={{ fontWeight: "bold" }}>
+          Home
+        </NavLink>{" "}
+        <NavLink exact to="/discover" activeStyle={{ fontWeight: "bold" }}>
+          Discover
+        </NavLink>{" "}
+        <NavLink exact to="/about" activeStyle={{ fontWeight: "bold" }}>
+          About
+        </NavLink>
+      </Route>
     </div>
   );
 }
