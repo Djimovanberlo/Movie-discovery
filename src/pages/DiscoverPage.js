@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import axios from "axios";
 
 export default function DiscoverPage() {
-  console.log("SEARCHboy");
   const [searchText, set_searchText] = useState("");
+  const [searchState, set_searchState] = useState("");
 
-  function search() {
-    console.log("TO DO: SEARCH FUNCTION", searchText);
+  console.log("SEARCHboy", searchText);
+
+  async function search() {
+    console.log("Searching for...", searchText);
+    set_searchState("searching...");
+    const data = await axios.get(
+      `http://www.omdbapi.com/?s=${searchText}&apikey=a7462395`
+    );
+    setTimeout(() => set_searchState("Done. data: "), 1000);
+    console.log("DATA:", data);
   }
+
   return (
     <div>
       <h1>Discover some movies!</h1>
@@ -18,6 +27,7 @@ export default function DiscoverPage() {
         />
         <button onClick={search}>Search</button>
       </p>
+      <p>{searchState}</p>
     </div>
   );
 }
