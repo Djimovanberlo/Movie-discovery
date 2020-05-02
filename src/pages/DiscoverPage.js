@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Movie from "../components/Movie";
 
 export default function DiscoverPage() {
   const [searchText, set_searchText] = useState("");
@@ -13,21 +14,44 @@ export default function DiscoverPage() {
     const data = await axios.get(
       `http://www.omdbapi.com/?s=${searchText}&apikey=a7462395`
     );
-    setTimeout(() => set_searchState("Done. data: "), 1000);
-    console.log("DATA:", data);
+    const movies = data.data.Search;
+
+    console.log("movies:", movies);
+
+    function movieText() {
+      return (
+        <div>
+          {movies.map((movie) => {
+            console.log(movie);
+            return (
+              <div>
+                <h4>
+                  {movie.Title} ({movie.Year})
+                </h4>
+                <img src={movie.Poster} />
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    set_searchState(movieText);
   }
 
   return (
     <div>
       <h1>Discover some movies!</h1>
       <p>
-        <input
-          value={searchText}
-          onChange={(event) => set_searchText(event.target.value)}
-        />
-        <button onClick={search}>Search</button>
+        Write (part of) a movie title and hit search to show all movies
+        containing that title
       </p>
-      <p>{searchState}</p>
+      <input
+        value={searchText}
+        onChange={(event) => set_searchText(event.target.value)}
+      />
+      <button onClick={search}>Search</button>
+      <div>{searchState}</div>
     </div>
   );
 }
