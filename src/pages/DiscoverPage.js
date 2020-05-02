@@ -12,10 +12,9 @@ export default function DiscoverPage() {
     console.log("Searching for...", searchText);
     set_searchState("searching...");
     const data = await axios.get(
-      `http://www.omdbapi.com/?s=${searchText}&apikey=a7462395`
+      `https://www.omdbapi.com/?s=${searchText}&apikey=a7462395`
     );
     const movies = data.data.Search;
-
     console.log("movies:", movies);
 
     function movieText() {
