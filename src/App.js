@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import HomePage from "./pages/HomePage";
 import DiscoverPage from "./pages/DiscoverPage";
+import Movie from "./components/Movie";
 import AboutPage from "./pages/AboutPage";
 import NavBar from "./components/NavBar";
 import "./App.css";
@@ -15,6 +15,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/discover" component={DiscoverPage} />
+        <Route path="/discover/:imdbID" component={Movie}></Route>
         <Route exact path="/about" component={AboutPage} />
       </Switch>
     </div>

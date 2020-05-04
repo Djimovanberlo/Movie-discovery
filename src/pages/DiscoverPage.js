@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Movie from "../components/Movie";
 
@@ -28,12 +29,17 @@ export default function DiscoverPage() {
                   {movie.Title} ({movie.Year})
                 </h4>
                 <img src={movie.Poster} />
+                <Link to={`/discover/${movie.imdbID}`}>
+                  Movie id: {movie.imdbID}
+                </Link>
               </div>
             );
           })}
         </div>
       );
     }
+    // Hierboven: movie.imdbID -> movie = param & dus enkel obj van array movies
+    // .imdbID = property van movie
 
     set_searchState(movieText);
   }
